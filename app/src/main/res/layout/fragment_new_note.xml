@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp">
+
+
+            <RelativeLayout
+                android:id="@+id/date_image_relative_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:src="@drawable/ic_calendar_icon__6"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="31"
+                    android:id="@+id/dayTextView"
+                    android:layout_centerInParent="true"
+                    android:paddingTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/fragment_note_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="24dp"
+                android:padding="2dp"
+                android:textAlignment="center"
+                android:text="NEW NOTE at 1 December"
+
+
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/date_image_relative_layout"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@android:color/darker_gray"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Note title"
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/note_title_text_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter note title here"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Note text"
+            style="?android:listSeparatorTextViewStyle"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/note_text_text_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter note text here"/>
+
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="save note"/>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>
