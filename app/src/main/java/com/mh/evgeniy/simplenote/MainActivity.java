@@ -3,6 +3,8 @@ package com.mh.evgeniy.simplenote;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private HashSet<Date> events;
     private NotesManager nm;
     private CalendarView cv;
+    private RecyclerView mLastNotesRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -54,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        mLastNotesRecyclerView=(RecyclerView)findViewById(R.id.last_notes_recycler_view);
+        mLastNotesRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
 
     @Override
@@ -64,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI(){
-        Log.d("sdsadasdas","updateUI()");
         mNotes=nm.getNotes();
 
         if(events.size()!=0) events.clear();

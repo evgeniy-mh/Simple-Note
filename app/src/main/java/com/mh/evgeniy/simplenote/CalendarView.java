@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.Debug;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -36,7 +36,7 @@ public class CalendarView extends LinearLayout
 	private static final int DAYS_COUNT = 42;
 
 	// default date format
-	private static final String DATE_FORMAT = "MMM yyyy";
+	private static final String DATE_FORMAT = "MMMM yyyy";
 
 	// date format
 	private String dateFormat;
@@ -48,11 +48,13 @@ public class CalendarView extends LinearLayout
 	private EventHandler eventHandler = null;
 
 	// internal components
-	private LinearLayout header;
-	private ImageView btnPrev;
-	private ImageView btnNext;
-	private TextView txtDate;
-	private GridView grid;
+	private LinearLayout mCalendarHeader;
+	private ImageView mPrevButton;
+	private ImageView mNextButton;
+	private TextView mCalendarDateDisplay;
+	private GridView mCalendarGridGridView;
+
+	private Locale ruLocale=new Locale("ru","RU");
 
 	// seasons' rainbow
 	int[] rainbow = new int[] {
@@ -116,17 +118,17 @@ public class CalendarView extends LinearLayout
 	private void assignUiElements()
 	{
 		// layout is inflated, assign local variables to components
-		header = (LinearLayout)findViewById(R.id.calendar_header);
-		btnPrev = (ImageView)findViewById(R.id.calendar_prev_button);
-		btnNext = (ImageView)findViewById(R.id.calendar_next_button);
-		txtDate = (TextView)findViewById(R.id.calendar_date_display);
-		grid = (GridView)findViewById(R.id.calendar_grid);
+		mCalendarHeader = (LinearLayout)findViewById(R.id.calendar_header);
+		mPrevButton = (ImageView)findViewById(R.id.calendar_prev_button);
+		mNextButton = (ImageView)findViewById(R.id.calendar_next_button);
+		mCalendarDateDisplay = (TextView)findViewById(R.id.calendar_date_display);
+		mCalendarGridGridView = (GridView)findViewById(R.id.calendar_grid);
 	}
 
 	private void assignClickHandlers()
 	{
 		// add one month and refresh UI
-		btnNext.setOnClickListener(new OnClickListener()
+		mNextButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -137,7 +139,7 @@ public class CalendarView extends LinearLayout
 		});
 
 		// subtract one month and refresh UI
-		btnPrev.setOnClickListener(new OnClickListener()
+		mPrevButton.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			public void onClick(View v)
@@ -148,7 +150,7 @@ public class CalendarView extends LinearLayout
 		});
 
 		// long-pressing a day
-		grid.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+		mCalendarGridGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
 		{
 
 			@Override
@@ -163,7 +165,7 @@ public class CalendarView extends LinearLayout
 			}
 		});
 
-		grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		mCalendarGridGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				if(eventHandler==null) return;
@@ -193,8 +195,7 @@ public class CalendarView extends LinearLayout
 		calendar.set(Calendar.DAY_OF_MONTH, 1);
 
 		int monthBeginningCell;
-		Locale ru=new Locale("ru","RU");
-		if (Locale.getDefault().equals(ru)){
+		if (Locale.getDefault().equals(ruLocale)){
 			monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK)-2; //первый день недели понедельник
 		}else {
 			monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK) - 1; //первый день недели воскресение
@@ -212,18 +213,19 @@ public class CalendarView extends LinearLayout
 		}
 
 		// update grid
-		grid.setAdapter(new CalendarAdapter(getContext(), cells, events));
+		mCalendarGridGridView.setAdapter(new CalendarAdapter(getContext(), cells, events));
 
 		// update title
-		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
-		txtDate.setText(sdf.format(currentDate.getTime()));
+		SimpleDateFormat sdf= new SimpleDateFormat(dateFormat);
+		mCalendarDateDisplay.setText(sdf.format(currentDate.getTime()));
+
 
 		// set header color according to current season
 		int month = currentDate.get(Calendar.MONTH);
 		int season = monthSeason[month];
 		int color = rainbow[season];
 
-		header.setBackgroundColor(getResources().getColor(color));
+		mCalendarHeader.setBackgroundColor(getResources().getColor(color));
 	}
 
 
