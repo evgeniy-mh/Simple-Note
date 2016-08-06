@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Debug;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 
 /**
  * Created by a7med on 28/06/2015.
@@ -188,7 +191,15 @@ public class CalendarView extends LinearLayout
 
 		// determine the cell for current month's beginning
 		calendar.set(Calendar.DAY_OF_MONTH, 1);
-		int monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+
+		int monthBeginningCell;
+		Locale ru=new Locale("ru","RU");
+		if (Locale.getDefault().equals(ru)){
+			monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK)-2; //первый день недели понедельник
+		}else {
+			monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK) - 1; //первый день недели воскресение
+		}
+
 
 		// move calendar backwards to the beginning of the week
 		calendar.add(Calendar.DAY_OF_MONTH, -monthBeginningCell);
