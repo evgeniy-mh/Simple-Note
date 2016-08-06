@@ -72,64 +72,6 @@ public class SingleDateFragment extends Fragment{
         return view;
     }
 
-
-    private class NoteHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private Note mNote;
-        private TextView mNoteTitle;
-
-        public NoteHolder(View itemView) {
-            super(itemView);
-            itemView.setOnClickListener(this);
-            mNoteTitle=(TextView)itemView.findViewById(R.id.list_item_note_title);
-        }
-
-        public void bindNote(Note note){
-            mNote=note;
-            mNoteTitle.setText(mNote.getTitle());
-        }
-
-        @Override
-        public void onClick(View v) { //считывать текст из файла тут
-            /*Intent i = SingleNoteActivity.newIntent(getActivity(), mNote);
-            startActivityForResult(i,SINGLE_NOTE_REQUEST_CODE);*/
-            Intent i=NotePagerActivity.newIntent(getActivity(),mNote.getId(),mNote.getDate());
-            startActivity(i);
-
-        }
-    }
-
-    private class NoteAdapter extends RecyclerView.Adapter<NoteHolder>{
-
-        private List<Note> mNotes;
-
-        public NoteAdapter(List<Note> notes){
-            mNotes=notes;
-        }
-
-        public void setNotes(List<Note> notes){
-            mNotes=notes;
-        }
-
-        @Override
-        public NoteHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater layoutInflater=LayoutInflater.from(getActivity());
-            View view=layoutInflater.inflate(R.layout.list_item_note,parent,false);
-
-            return new NoteHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(NoteHolder holder, int position) {
-            Note note=mNotes.get(position);
-            holder.bindNote(note);
-        }
-
-        @Override
-        public int getItemCount() {
-            return mNotes.size();
-        }
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode== Activity.RESULT_OK) {
@@ -171,7 +113,7 @@ public class SingleDateFragment extends Fragment{
     private void updateUI(){
         mTodayNotes=NotesManager.get(getActivity()).getNotes(mDate);
         if(mNoteAdapter==null){
-            mNoteAdapter=new NoteAdapter(mTodayNotes);
+            mNoteAdapter=new NoteAdapter(mTodayNotes,getActivity());
             mNotesRecyclerView.setAdapter(mNoteAdapter);
         }else
         {

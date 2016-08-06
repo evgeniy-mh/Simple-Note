@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private NotesManager nm;
     private CalendarView cv;
     private RecyclerView mLastNotesRecyclerView;
+    private NoteAdapter mNoteAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         nm=NotesManager.get(MainActivity.this);
 
         cv = ((CalendarView)findViewById(R.id.calendar_view));
+
+        mLastNotesRecyclerView=(RecyclerView)findViewById(R.id.last_notes_recycler_view);
+        mLastNotesRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
         updateUI();
 
         // assign event handler
@@ -58,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mLastNotesRecyclerView=(RecyclerView)findViewById(R.id.last_notes_recycler_view);
-        mLastNotesRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
     }
 
     @Override
@@ -78,6 +83,17 @@ public class MainActivity extends AppCompatActivity {
             events.add(n.getDate());
         }
         cv.updateCalendar(events);
+
+
+        List<Note> reversedNotes=new ArrayList<Note>(mNotes);
+        Collections.reverse(reversedNotes);
+        if(mNoteAdapter==null){
+            mNoteAdapter=new NoteAdapter(reversedNotes,MainActivity.this);
+            mLastNotesRecyclerView.setAdapter(mNoteAdapter);
+        }else {
+            mNoteAdapter.setNotes(reversedNotes);
+            mNoteAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override
