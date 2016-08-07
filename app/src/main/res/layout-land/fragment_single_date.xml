@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:weightSum="1">
+
+    <LinearLayout
+        android:id="@+id/date_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_calendar_icon__6"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="31"
+        android:id="@+id/dayTextView"
+        android:layout_centerInParent="true"
+        android:paddingTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="45dp"
+        android:textStyle="bold"
+        />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="April 2016"
+        android:paddingLeft="50dp"
+        android:id="@+id/monthYearTextView"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:layout_gravity="center_vertical"/>
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="100dp"
+        android:text="@string/add_note_button"
+        android:layout_alignParentRight="true"
+        android:id="@+id/add_note_button"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@+id/date_linear_layout"/>
+
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/notes_recycler_view"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_linear_layout"
+        android:layout_alignParentBottom="true"/>
+
+
+
+
+
+
+
+
+</RelativeLayout>

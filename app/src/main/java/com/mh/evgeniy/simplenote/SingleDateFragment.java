@@ -50,7 +50,7 @@ public class SingleDateFragment extends Fragment{
         SimpleDateFormat formatter=new SimpleDateFormat("d");
         mDayTextView =(TextView)view.findViewById(R.id.dayTextView);
         mDayTextView.setText(formatter.format(mDate));
-        formatter=new SimpleDateFormat("MMMM yyyy");
+        formatter=new SimpleDateFormat("LLLLL yyyy");
         mYearMonthTextView=(TextView)view.findViewById(R.id.monthYearTextView);
         mYearMonthTextView.setText(formatter.format(mDate));
 

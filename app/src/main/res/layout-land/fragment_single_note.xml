@@ -20,29 +20,42 @@
                 android:src="@drawable/ic_action_name"
                 android:tint="@android:color/darker_gray"/>
 
-            <TextView
-                android:id="@+id/fragment_note_title"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/new_note_title_image_view"
-                android:layout_toRightOf="@+id/new_note_title_image_view"
-                android:textAlignment="center"
-                android:textSize="24dp"
-                android:textStyle="bold"/>
+                android:layout_toRightOf="@+id/new_note_title_image_view">
+
+                <TextView
+                    android:id="@+id/fragment_note_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    android:text="NOTE at 3 August 2016"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/note_title_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Note title"
+                    android:textAlignment="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
 
         </RelativeLayout>
 
 
-        <TextView
-            android:id="@+id/note_title_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="10dp"
-            android:text="Note title"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
 
         <View
             android:layout_width="match_parent"
@@ -71,7 +84,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/edit_note_button"
-            style="@style/Base.TextAppearance.AppCompat.Button"
             android:layout_weight="1"/>
 
         <Button
@@ -79,7 +91,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            style="@style/Base.TextAppearance.AppCompat.Button"
             android:text="@string/delete_note_button"/>
 
     </LinearLayout>

@@ -1,0 +1,17 @@
+<resources>
+	<string name="action_settings">Settings</string>
+	<string name="app_name">Simple Note</string>
+	<string name="last_notes">Последние заметки</string>
+
+
+	<string name="new_note_fragment_title">Новая заметка на</string>
+	<string name="note_fragment_title">Заметка на</string>
+	<string name="add_note_button">Добавить заметку</string>
+	<string name="note_title_text_view">Название</string>
+	<string name="note_title_text_edit_hint">Введите название заметки здесь</string>
+	<string name="note_text_text_view">Текст</string>
+	<string name="note_text_text_edit_hint">"Введите текст заметки здесь</string>
+	<string name="save_note_button">Сохранить заметку</string>
+	<string name="edit_note_button">Изменить</string>
+	<string name="delete_note_button">Удалить</string>
+</resources>

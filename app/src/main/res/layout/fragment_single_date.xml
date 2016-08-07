@@ -28,7 +28,7 @@
                 android:text="31"
                 android:id="@+id/dayTextView"
                 android:layout_centerInParent="true"
-                android:paddingTop="30dp"
+                android:paddingTop="15dp"
                 android:layout_centerHorizontal="true"
                 android:textSize="45dp"
                 android:textStyle="bold"
@@ -36,7 +36,7 @@
         </RelativeLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="April 2016"
 
@@ -67,8 +67,9 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add note"
+        android:text="@string/add_note_button"
         android:layout_alignParentBottom="true"
+        style="@style/Base.TextAppearance.AppCompat.Button"
         android:id="@+id/add_note_button"/>
 
 
