@@ -58,6 +58,12 @@ public class NotesManager {
         return notes;
     }
 
+    public void deleteAllNotes(){
+        for(Note n:getNotes()){
+            deleteNote(n);
+        }
+    }
+
     public List<Note> getNotes(Date date){ //найти все заметки для определенного дня
         List<Note> notes=new ArrayList<>();
         List<Note> allNotes=getNotes();
@@ -92,7 +98,7 @@ public class NotesManager {
         File noteTextFile=new File(mNotesFilesDir,note.getNoteFilename());
         boolean deleted=noteTextFile.delete();
 
-        //Log.d("sdasda",deleted? "file "+note.getTitle()+" deleted" : "cant delete file of "+note.getTitle());
+        Log.d("sdasda",deleted? "file "+note.getTitle()+" deleted" : "cant delete file of "+note.getTitle());
 
     }
 

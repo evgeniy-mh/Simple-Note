@@ -24,7 +24,7 @@
 
         <activity android:name=".NotePagerActivity"></activity>
 
-
+        <activity android:name=".AboutActivity"></activity>
 
 
     </application>

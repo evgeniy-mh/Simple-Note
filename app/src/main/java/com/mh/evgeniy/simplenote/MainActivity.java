@@ -1,7 +1,9 @@
 package com.mh.evgeniy.simplenote;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -97,6 +99,53 @@ public class MainActivity extends AppCompatActivity {
         mLastNotesRecyclerView.scrollToPosition(0);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        nm.deleteAllNotes();
+                        updateUI();
+                        break;
+
+                }
+            }
+        };
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_about)
+        {
+            Intent i=new Intent(MainActivity.this,AboutActivity.class);
+            startActivity(i);
+            return true;
+        }
+
+        if(id == R.id.action_delete_all_notes){
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setMessage(getString(R.string.delete_all_notes_question)).setPositiveButton(getString(R.string.delete_all_notes_question_y), dialogClickListener)
+                    .setNegativeButton(getString(R.string.delete_all_notes_question_n),dialogClickListener).show();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 }
