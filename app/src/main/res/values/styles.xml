@@ -3,8 +3,11 @@
 	<!-- Base application theme. -->
 	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 		<!-- Customize your theme here. -->
-		<item name="colorPrimaryDark">@color/verdigris</item>
-		<item name="colorPrimary">@color/jungle_green</item>
+		<item name="colorPrimaryDark">@color/steel_blue</item>
+		<item name="colorPrimary">@color/cyan_cornflower_blue</item>
+
+		<item name="android:textColorHighlight">@color/steel_blue</item>
+		<item name="colorAccent">@color/steel_blue</item>
 	</style>
 
 	<style name="TitleStyle">
@@ -13,6 +16,15 @@
 
 	<style name="SubTitleStyle">
 		<item name="android:textColor">@color/granite_gray</item>
+	</style>
+
+	<style name="SmallTextStyle">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textColor">@color/granite_gray</item>
+	</style>
+
+	<style name="SepatatorStyle">
+		<item name="android:background">@color/granite_gray</item>
 	</style>
 
 </resources>

@@ -3,6 +3,7 @@
 	<string name="app_name">Simple Note</string>
 	<string name="last_notes">Last notes</string>
 
+	<string name="no_note_title">Please enter note title</string>
 
 	<string name="new_note_fragment_title">NEW NOTE at</string>
 	<string name="note_fragment_title">NOTE at</string>

@@ -38,6 +38,8 @@ public class CalendarView extends LinearLayout
 	// default date format
 	private static final String DATE_FORMAT = "MMMM yyyy";
 
+	private HashSet<Date> mNotes;
+
 	// date format
 	private String dateFormat;
 
@@ -180,7 +182,7 @@ public class CalendarView extends LinearLayout
 	 */
 	public void updateCalendar()
 	{
-		updateCalendar(null);
+		updateCalendar(mNotes);
 	}
 
 	/**
@@ -188,6 +190,8 @@ public class CalendarView extends LinearLayout
 	 */
 	public void updateCalendar(HashSet<Date> events)
 	{
+		mNotes=events;
+
 		ArrayList<Date> cells = new ArrayList<>();
 		Calendar calendar = (Calendar)currentDate.clone();
 

@@ -27,7 +27,7 @@
 	<View
 		android:layout_width="match_parent"
 		android:layout_height="5dp"
-		android:background="@android:color/darker_gray"
+		style="@style/SepatatorStyle"
 		android:layout_below="@+id/date_linear_layout"/>
 
 	<android.support.v7.widget.RecyclerView

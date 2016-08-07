@@ -22,7 +22,8 @@
                     android:layout_height="wrap_content"
                     android:padding="3dp"
                     android:src="@drawable/ic_calendar_icon__6"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true"
+                    android:tint="@color/cyan_cornflower_blue"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -34,6 +35,7 @@
                     android:layout_centerHorizontal="true"
                     android:textSize="30dp"
                     android:textStyle="bold"
+                    android:textColor="@color/cyan_cornflower_blue"
                     />
             </RelativeLayout>
 
@@ -46,8 +48,7 @@
                 android:paddingTop="10dp"
                 android:textAlignment="center"
                 android:text="NEW NOTE at 1 December"
-
-
+                style="@style/TitleStyle"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/date_image_relative_layout"
@@ -59,7 +60,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:background="@android:color/darker_gray"/>
+            style="@style/SepatatorStyle"/>
 
 
         <TextView
@@ -67,6 +68,7 @@
             android:layout_height="wrap_content"
             android:text="@string/note_title_text_view"
             style="?android:listSeparatorTextViewStyle"
+            android:textColor="@color/granite_gray"
             android:layout_marginTop="10dp"/>
 
         <EditText
@@ -80,7 +82,8 @@
             android:layout_height="wrap_content"
             android:text="@string/note_text_text_view"
             style="?android:listSeparatorTextViewStyle"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:textColor="@color/granite_gray"/>
 
         <EditText
             android:id="@+id/note_text_text_edit"

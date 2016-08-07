@@ -34,8 +34,6 @@ public class SingleNoteFragment extends Fragment{
     private TextView mNoteTitleTextView;
     private TextView mNoteTextTextView;
     private Date mDate;
-    //private Button mDeleteNoteButton;
-    //private Button mEditNoteButton;
     private File externalFilesDir;
 
 
@@ -64,22 +62,6 @@ public class SingleNoteFragment extends Fragment{
         mYearMonthTextView=(TextView)view.findViewById(R.id.fragment_note_title);
         mNoteTitleTextView=(TextView)view.findViewById(R.id.note_title_text_view);
         mNoteTextTextView=(TextView)view.findViewById(R.id.note_text_text_view);
-        /*mDeleteNoteButton=(Button)view.findViewById(R.id.delete_note_button);
-        mEditNoteButton=(Button)view.findViewById(R.id.edit_note_button);
-
-        mDeleteNoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteNote();
-                getActivity().finish();
-            }
-        });
-        mEditNoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editNote();
-            }
-        });*/
         externalFilesDir = getContext().getFilesDir();
 
         updateUI();
@@ -155,7 +137,7 @@ public class SingleNoteFragment extends Fragment{
 
                     setResultActivityChanged(true);
                 }else{
-                    Toast.makeText(getActivity(),"Please enter note title",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),getString(R.string.no_note_title),Toast.LENGTH_SHORT).show();
                 }
             }
 

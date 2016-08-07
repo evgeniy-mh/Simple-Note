@@ -3,6 +3,7 @@
 	<string name="app_name">Simple Note</string>
 	<string name="last_notes">Последние заметки</string>
 
+	<string name="no_note_title">Вы не ввели название заметки</string>
 
 	<string name="new_note_fragment_title">Новая заметка на</string>
 	<string name="note_fragment_title">Заметка на</string>

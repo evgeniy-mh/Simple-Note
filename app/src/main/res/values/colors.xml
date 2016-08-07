@@ -10,11 +10,11 @@
 
 
 	<!--app colors-->
-	<color name="jungle_green">#26A599</color>
+	<color name="cyan_cornflower_blue">#2688a5</color>
 	<color name="arsenic">#434343</color>
 	<color name="granite_gray">#676767</color>
 	<color name="black">#000000</color>
-	<color name="verdigris">#44b2aa</color>
+	<color name="steel_blue">#4499b2</color>
 
 
 </resources>

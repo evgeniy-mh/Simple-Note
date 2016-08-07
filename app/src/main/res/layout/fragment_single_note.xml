@@ -15,7 +15,7 @@
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:src="@drawable/ic_note_icon"
-                android:tint="@android:color/darker_gray"/>
+                android:tint="@color/cyan_cornflower_blue"/>
 
             <TextView
                 android:id="@+id/fragment_note_title"
@@ -47,7 +47,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:background="@android:color/darker_gray"/>
+            style="@style/SepatatorStyle"/>
 
         <TextView
             android:id="@+id/note_text_text_view"
@@ -55,6 +55,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="Note text"
+            style="@style/SmallTextStyle"
             android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 

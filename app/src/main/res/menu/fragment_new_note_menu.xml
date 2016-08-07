@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/menu_item_save_note"
-        android:icon="@android:drawable/ic_menu_save"
+        android:icon="@drawable/ic_action_content_save"
         android:title="@string/save_note_button"
         app:showAsAction="ifRoom|withText"/>
 
