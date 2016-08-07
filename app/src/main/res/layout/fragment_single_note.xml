@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -17,7 +14,7 @@
                 android:id="@+id/new_note_title_image_view"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:src="@drawable/ic_action_name"
+                android:src="@drawable/ic_note_icon"
                 android:tint="@android:color/darker_gray"/>
 
             <TextView
@@ -30,7 +27,9 @@
                 android:layout_toRightOf="@+id/new_note_title_image_view"
                 android:textAlignment="center"
                 android:textSize="24dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:text="Note at "
+                style="@style/TitleStyle"/>
 
         </RelativeLayout>
 
@@ -42,6 +41,7 @@
             android:layout_gravity="center_horizontal"
             android:padding="10dp"
             android:text="Note title"
+            style="@style/SubTitleStyle"
             android:textAppearance="?android:attr/textAppearanceLarge"/>
 
         <View
@@ -59,30 +59,3 @@
 
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
-
-        <Button
-            android:id="@+id/edit_note_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/edit_note_button"
-            style="@style/Base.TextAppearance.AppCompat.Button"
-            android:layout_weight="1"/>
-
-        <Button
-            android:id="@+id/delete_note_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/Base.TextAppearance.AppCompat.Button"
-            android:text="@string/delete_note_button"/>
-
-    </LinearLayout>
-
-
-</RelativeLayout>

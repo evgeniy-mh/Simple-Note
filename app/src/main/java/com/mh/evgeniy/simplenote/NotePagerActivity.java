@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.UUID;
 /**
  * Created by evgeniy on 06.08.2016.
  */
-public class NotePagerActivity extends FragmentActivity {
+public class NotePagerActivity extends AppCompatActivity {
 
     //private static String EXTRA_NOTE="com.mh.evgeniy.simplenote.extra_note";
     //private static String EXTRA_DATE="com.mh.evgeniy.simplenote.extra_date";

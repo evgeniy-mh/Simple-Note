@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -27,7 +30,7 @@ public class NewNoteFragment extends Fragment{
     private TextView mDayTextView;
     private EditText mNoteTitle;
     private EditText mNoteText;
-    private Button mSaveButton;
+    //private Button mSaveButton;
     private Date mDate;
 
     private Note mNote; //может быть null
@@ -36,6 +39,7 @@ public class NewNoteFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         mDate=(Date)getActivity().getIntent().getSerializableExtra(NewNoteActivity.EXTRA_NEW_NOTE_FRAGMENT_DATE);
         mNote=(Note)getActivity().getIntent().getSerializableExtra(NewNoteActivity.EXTRA_NEW_NOTE_FRAGMENT_EXISTING_NOTE);
     }
@@ -65,16 +69,33 @@ public class NewNoteFragment extends Fragment{
             mNoteText.setText(mNote.getNoteText(externalFilesDir));
         }
 
-        mSaveButton=(Button)view.findViewById(R.id.save_button);
+        /*mSaveButton=(Button)view.findViewById(R.id.save_button);
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveNote();
             }
-        });
+        });*/
 
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_new_note_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        super.onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.menu_item_save_note:
+                saveNote();
+                return true;
+            default: return super.onOptionsItemSelected(item);
+        }
     }
 
     private void saveNote(){

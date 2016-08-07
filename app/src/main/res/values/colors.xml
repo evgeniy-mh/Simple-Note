@@ -7,4 +7,14 @@
 	<color name="fall">#44d8d27e</color>
 	<color name="winter">#44a1c1da</color>
 	<color name="spring">#448da64b</color>
+
+
+	<!--app colors-->
+	<color name="jungle_green">#26A599</color>
+	<color name="arsenic">#434343</color>
+	<color name="granite_gray">#676767</color>
+	<color name="black">#000000</color>
+	<color name="verdigris">#44b2aa</color>
+
+
 </resources>

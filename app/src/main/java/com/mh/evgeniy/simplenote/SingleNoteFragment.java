@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -31,8 +34,8 @@ public class SingleNoteFragment extends Fragment{
     private TextView mNoteTitleTextView;
     private TextView mNoteTextTextView;
     private Date mDate;
-    private Button mDeleteNoteButton;
-    private Button mEditNoteButton;
+    //private Button mDeleteNoteButton;
+    //private Button mEditNoteButton;
     private File externalFilesDir;
 
 
@@ -48,7 +51,7 @@ public class SingleNoteFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
+        setHasOptionsMenu(true);
         //mNote=(Note)getActivity().getIntent().getSerializableExtra(SingleNoteActivity.EXTRA_NOTE);
         mNote=(Note)getArguments().getSerializable(ARG_NOTE);
         mDate=mNote.getDate();
@@ -61,7 +64,7 @@ public class SingleNoteFragment extends Fragment{
         mYearMonthTextView=(TextView)view.findViewById(R.id.fragment_note_title);
         mNoteTitleTextView=(TextView)view.findViewById(R.id.note_title_text_view);
         mNoteTextTextView=(TextView)view.findViewById(R.id.note_text_text_view);
-        mDeleteNoteButton=(Button)view.findViewById(R.id.delete_note_button);
+        /*mDeleteNoteButton=(Button)view.findViewById(R.id.delete_note_button);
         mEditNoteButton=(Button)view.findViewById(R.id.edit_note_button);
 
         mDeleteNoteButton.setOnClickListener(new View.OnClickListener() {
@@ -76,12 +79,32 @@ public class SingleNoteFragment extends Fragment{
             public void onClick(View v) {
                 editNote();
             }
-        });
+        });*/
         externalFilesDir = getContext().getFilesDir();
 
         updateUI();
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_single_note_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        super.onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.menu_item_edit_note:
+                editNote();
+                return true;
+            case R.id.menu_item_delete_note:
+                deleteNote();
+                return true;
+            default: return super.onOptionsItemSelected(item);
+        }
     }
 
     private void updateUI(){

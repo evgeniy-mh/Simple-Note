@@ -52,16 +52,7 @@
                 android:text="NEW NOTE at 1 December"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@+id/save_button"
                 android:layout_toRightOf="@+id/date_image_relative_layout"
-                android:layout_toEndOf="@+id/date_image_relative_layout"/>
-
-            <Button
-                android:id="@+id/save_button"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:text="@string/save_note_button"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"/>
 

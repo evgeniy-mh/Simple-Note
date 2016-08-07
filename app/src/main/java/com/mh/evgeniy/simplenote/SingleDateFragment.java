@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -33,13 +36,12 @@ public class SingleDateFragment extends Fragment{
     private RecyclerView mNotesRecyclerView;
     private NoteAdapter mNoteAdapter;
     private List<Note> mTodayNotes;
-    private Button mAddNoteButton;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-
+        setHasOptionsMenu(true);
         mDate=(Date)getActivity().getIntent().getSerializableExtra(SingleDateActivity.EXTRA_DATE_ID);
     }
 
@@ -59,17 +61,25 @@ public class SingleDateFragment extends Fragment{
 
         updateUI();
 
-        mAddNoteButton=(Button)view.findViewById(R.id.add_note_button);
-        mAddNoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {//запускать другой интент
+        return view;
+    }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        super.onCreateOptionsMenu(menu,inflater);
+        inflater.inflate(R.menu.fragment_single_date_menu,menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.menu_item_add_note:
                 Intent i=NewNoteActivity.newIntent(getActivity(),null,mDate); //только создание нового ноута
                 startActivityForResult(i,NEW_NOTE_REQUEST_CODE);
-            }
-        });
-
-        return view;
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
