@@ -98,7 +98,7 @@ public class NotesManager {
         File noteTextFile=new File(mNotesFilesDir,note.getNoteFilename());
         boolean deleted=noteTextFile.delete();
 
-        Log.d("sdasda",deleted? "file "+note.getTitle()+" deleted" : "cant delete file of "+note.getTitle());
+        //Log.d("sdasda",deleted? "file "+note.getTitle()+" deleted" : "cant delete file of "+note.getTitle());
 
     }
 
